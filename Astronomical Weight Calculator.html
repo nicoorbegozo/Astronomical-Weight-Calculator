@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Astronomical Weight Calculator</title>
+</head>
+
+<body>
+    <h1>Astronomical Weight Calculator</h1>
+    <form action="javascript:AWSFunction(weight.value , planet.value)">
+        <p>Type the weight on earth , select the planet and click the button</p>
+        <label for="weight">Weight(Kg):</label>
+        <input id="weight" type="text">
+        <label for="planet">Planet:</label>
+        <select id="planet">
+            <option>Mercury</option>
+            <option>Mars</option>
+            <option>Venus</option>
+            <option>Jupiter</option>
+            <option>Saturn</option>
+            <option>Uranus</option>
+            <option>Neptune</option>
+            <option>Pluto</option>
+            <option>Moon</option>
+        </select>
+        <input type="submit">
+    </form>
+    <!--
+            <p>Planet:</p>
+            <button onclick="AWSFunction()">calculate</button>
+            -->
+    <p id="aws"></p>
+    <script>
+        function AWSFunction(w, p) {
+            var t1 = {
+                "Mercury": 37.8,
+                "Mars": 37.932089324,
+                "Venus": 91,
+                "Jupiter": 252.8,
+                "Saturn": 106.4,
+                "Uranus": 88.1,
+                "Neptune": 80,
+                "Pluto": 6.7,
+                "Moon": 20
+            };
+            var factor = t1[p];
+            var newWeight = parseFloat(w / 100 * factor);  //round to 2 decimal digits
+            var resultado = newWeight.toFixed(2);
+            document.getElementById("aws").innerHTML = resultado;
+        }
+    </script>
+</body>
+
+</html>
